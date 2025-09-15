@@ -1,0 +1,101 @@
+[
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 1,
+    "fields": {
+      "keyword": "공부",
+      "alias": "시험, 프로젝트, 레포트, 과제, 학습, 공부 모임, 그룹 스터디, 팀플, 팀 프로젝트, 같이 공부, 학우랑 공부, 회의",
+      "category": "학업, 학습 관련"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 2,
+    "fields": {
+      "keyword": "휴식",
+      "alias": "쉴 곳, 쉼터, 잘 수 있는 곳, 누울 수 있는 곳, 침대, 눈 붙이기, 휴게 공간",
+      "category": "휴식 관련"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 3,
+    "fields": {
+      "keyword": "사무실",
+      "alias": "사무, 과사무, 과사무실, 과사",
+      "category": "사무실 관련"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 4,
+    "fields": {
+      "keyword": "동아리",
+      "alias": "동방, 동아리방, 동아리실, 동아리 모임, 동아리 공간, 소모임",
+      "category": "학생 활동 관련"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 5,
+    "fields": {
+      "keyword": "현금",
+      "alias": "현금, 돈, ATM, atm, ATM기, atm기, 인출기, 현금 인출기, 자동인출기, 자동입출금기",
+      "category": "금전, 금융 관련"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 6,
+    "fields": {
+      "keyword": "음악",
+      "alias": "음악실, 실습실, 레슨실, 악기, 연습실, 피아노, 보컬, 보컬 연습, 드럼, 노래 연습, 음악 실습실, 음악 연습 공간, 밴드 연습",
+      "category": "음악 활동 관련"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 7,
+    "fields": {
+      "keyword": "예술",
+      "alias": "미술, 미술관, 예술관, 예술, 그림, 드로잉, 페인팅, 캔버스, 조소, 조형, 작업실, 예술 공간, 조형예술, 예대, 예술대학, 작업 공간",
+      "category": "예술 활동 관련"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 8,
+    "fields": {
+      "keyword": "운동",
+      "alias": "운동, 체육, 헬스, 체육관, 운동장, 트레이닝, 러닝, 조깅, 구기, 농구, 축구, 체력 단련, 운동 시설",
+      "category": "운동 및 체육 활동"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 9,
+    "fields": {
+      "keyword": "프린터",
+      "alias": "프린터, 프린터기, 인쇄기, 복사기, 출력기, 출력, 프린트, 프린터기, 문서 출력, 출력물, 인쇄, 프린터 어디, 인쇄하고 싶어, 프린트실, 복사, 프린터 사용",
+      "category": "프린터 이용 관련"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 10,
+    "fields": {
+      "keyword": "식사",
+      "alias": "밥, 음식, 음식점, 식당, 배고픔, 애니이츠월드, 학생식당, 편의점, 간식, 먹을 곳, 식사 장소, 먹거리",
+      "category": "식사 및 음식 관련"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 11,
+    "fields": {
+      "keyword": "카페",
+      "alias": "커피, 음료, 빵, 블루포트",
+      "category": "카페 관련"
+    }
+  }
+]

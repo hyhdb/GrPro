@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Je-young Park | Portfolio (Unfinished)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      color: #222;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+      max-width: 1080px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1, h2, h3 {
+      color: #007acc;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    .table1{
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    .table2{
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+    } 
+    th, td {
+      border-bottom: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f8ff;
+      color: #007acc;
+      font-weight: 600;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    th:last-child, td:last-child {
+      border-right: none;
+    }
+    .project {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    ul {
+      padding-left: 1.1rem;
+    }
+    ul.marker1 {
+      list-style-type: "- ";
+      padding-left: 1.1rem;
+    }
+    
+    ul.marker2 {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .highlight {
+      background: #e0f4ff;
+      padding: 0.05rem 0.3rem;
+      border-radius: 4px;
+    }
+    #langToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #007acc;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .name-and-icons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .name-and-icons h1 {
+      margin: 0;
+      font-size: 1.9rem;
+    }
+    
+    .contact-icons-inline a {
+      font-size: 1.9rem;
+      color: #444;
+      margin-left: 0.6rem; /* 조금 더 여유 있게 */
+      vertical-align: middle;
+    }
+    
+    .contact-icons-inline a:hover {
+      color: #007acc;
+    }
+  </style>
+  <script>
+    function toggleLanguage() {
+      const en = document.getElementById('english');
+      const ko = document.getElementById('korean');
+      const btn = document.getElementById('langToggle');
+  
+      if (en.style.display === 'none') {
+        en.style.display = 'block';
+        ko.style.display = 'none';
+        btn.textContent = '🇰🇷 한국어 보기';
+      } else {
+        en.style.display = 'none';
+        ko.style.display = 'block';
+        btn.textContent = '🇺🇸 영어로 보기';
+      }
+    }
+  </script>
+</head>
+<body>
+  
+  <button id="langToggle" onclick="toggleLanguage()">🇰🇷 한국어 보기</button>
+
+  <!-- ENGLISH VERSION -->
+  <div id="english">
+    <section style="display: flex; align-items: flex-start; margin-bottom: 3rem;">
+      <img src="images/my_face.png" alt="Profile Image"
+        style="width: 200px; height: auto; border-radius: 12px; margin-right: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+      <div>
+        <div class="name-and-icons">
+          <h1 style="margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.6rem;">
+            👨‍💻 Je-young Park
+            <span class="contact-icons-inline">
+              <a href="mailto:qufqja72@gmail.com" target="_blank" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="https://github.com/jyPark1105" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </span>
+          </h2>
+        </div>
+
+        <p style="margin-top: 0; font-size: 0.95rem; color: #444;">
+          Undergraduate student at Sangmyung University (Computer Science)<br>
+          Passionate about computer graphics rendering and developing 2D/3D content with Unity<br>
+          Built multiple projects using OpenGL and Unity 3D
+        </p>
+        <p style="margin-top: 0.5rem;">
+          <span class="highlight">C++ & GLSL</span>
+          <span class="highlight">Unity 2D/3D</span>
+        </p>
+      </div>
+    </section>
+
+    <h1>👋 Hello, I'm Jeyoung Park!</h1>
+    <p><strong>“I aspire to transform my imagined graphics into real-time renderings.”</strong></p>
+    <p>
+      From OpenGL-based rendering to Unity-powered navigation systems,<br />
+      I have explored animation systems, pathfinding, and 3D interaction design.
+    </p>
+
+    <section>
+      <h2>🏫 Education</h2>
+      <ul>
+          <li>Sangmyung University, Seoul, Korea ( 2020.03 ~ Expected to graduate in 2026.02 )</li>
+          <ul>
+              <li>Bachelor of computer science, 4th year student</li>
+          </ul> 
+      </ul>
+    </section>
+
+    <section>
+      <h2>📚 Skills</h2>
+      <table class="table1">
+        <tr><th>Category</th><th>Details</th></tr>
+        <tr><td>💬 Languages</td><td>C++, C#, GLSL, Python</td></tr>
+        <tr><td>🔧 Tools</td><td>Unity 2D/3D, OpenGL</td></tr>
+        <tr><td>💡 Strengths</td><td>Fast learning, visual thinking, interaction planning, debugging</td></tr>
+        <tr><td>👥 Team Projects</td><td><strong>2 times</strong></td></tr>
+      </table>
+    </section>
+    
+    <section>
+      <h2>🧩 Featured Projects</h2>
+
+      <div class="project">
+        <h3>🪨 'The Rolling Stone' Game (2025.04 ~ 2025.06)</h3>
+        <p><strong>OpenGL</strong>, <strong>Bullet Physics</strong>, <strong>Skeletal Animation</strong> based 3D physics simulation</p>
+        <img src="gifs/Graphics Project_Demo.gif" alt="Rolling Stone Preview (GIF)" width="500" style="margin-top:10px; border-radius:8px;" />
+        <ul>
+          <li>Optimized matrix frame updates for <span class="highlight">better FPS</span></li>
+          <li>Implemented <span class="highlight">Physics Debug Drawer</span></li>
+          <li>Natural animation syncing with character-object interactions</li>
+        </ul>
+        <p><strong>🛠️ Role:</strong> Physics system design, animation optimization, rendering logic</p>
+        <p>🔗 GitHub Source:  
+          <a href="https://github.com/jyPark1105/The-Stone-Rolling-Game" target="_blank">'The Rolling Stone Game' Repository</a>
+        </p>
+        <p>
+         ▶️ <a href="https://www.youtube.com/watch?v=qQpmfwvg8O0" target="_blank" style="display:inline-block; padding:10px 16px; background:#cc0000; color:white; border-radius:6px; text-decoration:none;">
+            Watch Demo (YouTube)
+          </a>
+        </p>
+      </div>
+      
+      <div class="project">
+        <h3>🧭 University Campus Map Navigation System (2025.03 ~ Scheduled for completion in 2025.09)</h3>
+        <p><strong>Unity 3D</strong>, <strong>Firebase</strong>, <strong>OpenAI API</strong> powered 3D campus navigation system</p>
+      
+        <!-- 대표 이미지 -->
+        <div style="display: flex; justify-content: space-between; gap: 20px; margin-bottom: 2rem;">
+            <div style="flex: 1; text-align: center;">
+              <img src="images/Project 2_Auth Panel.png" alt="Authentication Panel" width="500" style="margin-top:10px; border-radius:8px;" />
+            </div>
+            <div style="flex: 1; text-align: center;">
+              <img src="images/Project 2_Main.png" alt="Main Screen" width="500" style="margin-top:10px; border-radius:8px;" />
+            </div>
+          </div>
+
+        <section>
+        <p style="font-weight:bold; margin-bottom: 1rem; font-size: 1.1rem;">📁 System Development Overview</p>
+          <table class="table2">
+            <colgroup>
+              <col style="width: 16%;">
+              <col style="width: 10%;">
+              <col style="width: 14%;">
+              <col style="width: 30%;">
+              <col style="width: 30%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Language</th>
+                <th>Technology</th>
+                <th>Internal Features</th>
+                <th>External Integration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🧹 Unity 3D</td>
+                <td>C#</td>
+                <td>
+                  <ul class="marker1">
+                    <li>Probuilder</li>
+                    <li>NavMesh</li>
+                    <li>WebGL Build</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>UI structure (Navigation, GPT Q&A, Campus Map)</li>
+                    <li>Pathfinding using NavMesh</li>
+                    <li>WebGL build deployment</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>Firebase integration (Signup, Login, Database)</li>
+                    <li>Interact with Django for Q&A</li>
+                    <li>Communicate with Django via UnityWebRequest (JSON)</li>
+                    <li>Embedded WebGL rendering in React web</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>🌐 Django Rest Framework (Backend)</td>
+                <td>Python</td>
+                <td>
+                  <ul class="marker1">
+                  <li>Django Rest API</li>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>Send user input to GPT-3.5 Turbo</li>
+                    <li>Search internal database (campus info)</li>
+                    <li>Process system prompts and organize answers</li>
+                    <li>Return JSON-formatted responses</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>Receive questions and return answers to Unity client</li>
+                    <li>Store and validate Q&A via Firebase Firestore</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>☁️ Firebase</td>
+                <td>JavaScript / JSON</td>
+                <td>
+                  <ul class="marker1">
+                    <li>Web App</li>
+                    <li>Authentication</li>
+                    <li>Firestore Database</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>Handles sign-up and login via Firebase Authentication</li>
+                    <li>Stores Chat-GPT Q&A data in Firestore by user account</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>Pass Firebase UID and session data to Django backend</li>
+                    <li>Django uses UID to store & associate GPT Q&A per user</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>💻 React + Node.js (Frontend)</td>
+                <td>JavaScript</td>
+                <td>
+                  <ul class="marker1">
+                    <li>React</li>
+                    <li>Node.js</li>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>User interface layout of web interface</li>
+                    <li>Embed Unity WebGL via iframe</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>Render Unity WebGL within React page</li>
+                    <li>Provide user interface for the user</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div style="margin-top:2rem;">
+          <p style="font-weight:bold; margin-bottom: 1rem; font-size: 1.1rem;">📸 Demo Highlights</p>
+        
+          <div style="display: flex; justify-content: space-between; gap: 20px; margin-bottom: 2rem;">
+            <div style="flex: 1; text-align: center;">
+              <img src="gifs/Sign-up.gif" alt="Sign-up" width="100%" style="border-radius: 8px;" />
+              <p style="margin-top: 0.5rem; font-size: 1rem; color: #555;">(1) Sign-up</p>
+            </div>
+            <div style="flex: 1; text-align: center;">
+              <img src="gifs/Login.gif" alt="Login" width="100%" style="border-radius: 8px;" />
+              <p style="margin-top: 0.5rem; font-size: 1rem; color: #555;">(2) Login</p>
+            </div>
+          </div>
+        
+          <div style="display: flex; justify-content: space-between; gap: 20px;">
+            <div style="flex: 1; text-align: center;">
+              <img src="gifs/Path Finder.gif" alt="Path Finder" width="100%" style="border-radius: 8px;" />
+              <p style="margin-top: 0.5rem; font-size: 1rem; color: #555;">(3) Path Finder</p>
+            </div>
+            <div style="flex: 1; text-align: center;">
+              <img src="gifs/GPT_Q&A.gif" alt="Chat-GPT Q & A" width="100%" style="border-radius: 8px;" />
+              <p style="margin-top: 0.5rem; font-size: 1rem; color: #555;">(4) Chat-GPT Q & A</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;">
+          <p style="font-weight:bold; margin-bottom: 1rem; font-size: 1.1rem;">🔧 Technical Details</p>
+          <ul class="marker2">
+            <li>Implemented <span class="highlight">user sign-up and login</span> functionality using Firebase, and developed features to <span class="highlight">save and retrieve Chat-GPT Q & A logs</span></li>
+            <li>Designed ChatGPT-powered <span class="highlight">NPC chat system</span></li>
+            <li>Implemented hill terrain-based realistic pathfinding logic</li>
+          </ul>
+        </div>
+
+        <p style="font-weight:bold; margin-bottom: 1rem; font-size: 1.1rem;">🛠️ Role</p>
+        <ul class="marker1" style="margin-top: -0.5rem;">
+          <li><strong>Unity</strong>: Developed user interface and core logic</li>
+          <li><strong>Firebase</strong>: Implemented sign-up and login features; saved and retrieved Chat-GPT Q&A logs</li>
+          <li><strong>Full-stack Web</strong>: Integrated Django with Firebase and connected Django with Unity</li>
+        </ul>
+
+        
+        <p>🔗 GitHub Source: 
+          <a href="https://github.com/jyPark1105/SMU-Navigator-and-Chat-GPT-NPC" target="_blank">University Campus Map Navigation System Repository (Scheduled to be uploaded in 2025.09)</a>
+        </p>
+      </div>
+    </section>
+    
+    <section>
+      <h2>🎮 My Small Games</h2>
+    
+      <div class="project">
+        <h3>⚽ #1 Ball Collector Game (2025.02.02 ~ 2025.02.12)</h3>
+
+        <p><strong>Unity</strong> based 3D platformer mini-game inspired by GoldMetal tutorials</p>
+        <img src="gifs/Roll & Get Item Game_3D.gif" alt="Ball Collector Game Preview (GIF)" width="500" style="margin-top:10px; border-radius:8px;" />
+        <ul>
+          <li>Applied <span class="highlight">3D physics and jump boost logic</span> based on collectible triggers</li>
+          <li>Used <span class="highlight">Sprite-based 2D user interface</span> with stage status & retry conditions</li>
+          <li>Designed level transitions across <span class="highlight">three different map scenes</span></li>
+        </ul>
+
+        <p><strong>🎮 Game Overview</strong></p>
+          <li>A game where the player rolls a ball across narrow and precarious platforms to collect all items (using the W, A, S, D keys)</li>
+          <li>Blue items are standard collectibles, while yellow items grant a one-time double jump ability</li>
+          <li>If all items are not collected, the game will restart even after reaching the final destination!</li>
+
+        <p><strong>🛠️ Role:</strong> Solo development</p>
+
+        <p>🔗 GitHub Source: 
+          <a href="https://github.com/jyPark1105/Unity-Beginner-Tutorial/tree/main/Project%20BE1" target="_blank">Ball Collector Game Repository</a>
+        </p>
+      </div>
+    
+      <div class="project">
+        <h3>🎯 #2 Get Coin Game (2025.02.16 ~ 2025.03.15)</h3>
+
+        <p><strong>Unity</strong> based small-scale game project</p>
+        <img src="gifs/Get Coin Game_2D.gif" alt="Get Coin Game Preview (GIF)" width="500" style="margin-top:10px; border-radius:8px;" />
+        <ul>
+          <li><span class="highlight">2D jump logic based on item triggers with physical colliders</span> applied</li>
+          <li><span class="highlight">User interface implemented using 2D sprites</span></li>
+          <li><span class="highlight">Stage-based game structure utilizing three distinct scene layouts</span></li>
+        </ul>
+        
+        <p><strong>🎮 Game Overview</strong></p>
+        <ul>
+          <li>A game where players collect different types of coins while avoiding enemies (using arrow keys)</li>
+          <li><span class="highlight">There are four types of potions</span>, each providing the following effects<br>
+            - <strong>Red Potion</strong>: Restores one unit of health<br>
+            - <strong>Green Potion</strong>: Grants a one-time double jump<br>
+            - <strong>Blue Potion</strong>: Temporarily increases jump power<br>
+            - <strong>Yellow Potion</strong>: Grants temporary invisibility</li>
+          <li><span class="highlight">There are two types of portals</span>, each providing the following effects<br>
+            - <strong>Red Portal</strong>: Instantly teleports the player to a linked portal<br>
+            - <strong>Black Portal</strong>: Moves the player to the next stage</li>
+          <li><span class="highlight">Escape the wide stage within the given time!</span></li>
+        </ul>
+
+        <p><strong>🛠️ Role:</strong> Solo development</p>
+
+        <p>🔗 GitHub Source: 
+          <a href="https://github.com/jyPark1105/Unity-Beginner-Tutorial/tree/main/Project%20BE2" target="_blank">Get Coin Game Repository</a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- KOREAN VERSION -->
+  <div id="korean" style="display:none;">
+    <section style="display: flex; align-items: flex-start; margin-bottom: 3rem;">
+      <img src="images/my_face.png" alt="프로필 이미지"
+        style="width: 200px; height: auto; border-radius: 12px; margin-right: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+      <div>
+        <div class="name-and-icons">
+          <h1 style="margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.6rem;">
+            👨‍💻 박제영
+            <span class="contact-icons-inline">
+              <a href="mailto:qufqja72@gmail.com" target="_blank" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="https://github.com/jyPark1105" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </span>
+          </h2>
+        </div>
+
+        <p style="margin-top: 0; font-size: 0.95rem; color: #444;">
+          상명대학교 컴퓨터과학전공 재학 중<br>
+          컴퓨터 그래픽스 렌더링 분야 및 Unity를 활용하여 2D/3D 제작에 관심이 많습니다.<br>
+          OpenGL과 Unity 기반으로 다양한 프로젝트를 수행했습니다.
+        </p>
+        <p style="margin-top: 0.5rem;">
+          <span class="highlight">C++ & GLSL</span>
+          <span class="highlight">Unity 2D/3D</span>
+        </p>
+      </div>
+    </section>
+
+    <h1>👋 안녕하세요, 박제영입니다!</h1>
+    <p><strong>“생각했던 그래픽을 제가 직접 구현해 현실로 만들고자 합니다.”</strong></p>
+    <p>
+      OpenGL 기반 렌더링부터 Unity 3D를 활용한 내비게이션 시스템까지,<br />
+      애니메이션, 경로 탐색, 3D 상호작용 등을 경험했습니다.
+    </p>
+
+    <section>
+      <h2>🏫 학력</h2>
+      <ul>
+          <li>상명대학교, 서울캠퍼스, 대한민국 ( 2020.03 ~ 2026.02 졸업 예정 )</li>
+          <ul>
+              <li>컴퓨터과학전공 학사, 4학년 재학</li>
+          </ul> 
+      </ul>
+    </section>
+    
+    <section>
+      <h2>📚 역량</h2>
+      <table class="table1">
+        <tr><th>항목</th><th>내용</th></tr>
+        <tr><td>💬 사용 언어</td><td>C++, C#, GLSL, Python</td></tr>
+        <tr><td>🔧 도구</td><td>Unity 2D/3D, OpenGL</td></tr>
+        <tr><td>💡 강점</td><td>빠른 학습력, 시각화 사고, 인터랙션 설계, 디버깅 능력</td></tr>
+        <tr><td>👥 팀 프로젝트</td><td><strong>2회</strong> 진행</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>🧩 주요 프로젝트</h2>
+
+      <div class="project">
+        <h3>🪨 'The Rolling Stone' 게임 (2025.04 ~ 2025.06)</h3>
+        <p><strong>OpenGL</strong>, <strong>Bullet Physics</strong>, <strong>Skeletal Animation</strong> 기반 3D 물리 시뮬레이션 게임</p>
+        <img src="gifs/Graphics Project_Demo.gif" alt="'The Rolling Stone' 게임 미리보기 (GIF)" width="500" style="margin-top:10px; border-radius:8px;" />
+        <ul>
+          <li>본 행렬 프레임 최적화로 <span class="highlight">FPS 성능 향상</span></li>
+          <li><span class="highlight">물리 디버깅 함수</span> 구현</li>
+          <li>캐릭터-오브젝트 상호작용에 따른 자연스러운 애니메이션 동기화</li>
+        </ul>
+        <p><strong>🛠️ 담당 역할:</strong> 물리 시스템 설계, 애니메이션 최적화, 렌더링 로직 개선</p>
+        <p>🔗 깃허브 링크: 
+          <a href="https://github.com/jyPark1105/The-Stone-Rolling-Game" target="_blank">'The Rolling Stone' 게임 저장소</a>
+        </p>
+        <p>
+          ▶️ <a href="https://www.youtube.com/watch?v=qQpmfwvg8O0" target="_blank" style="display:inline-block; padding:10px 16px; background:#cc0000; color:white; border-radius:6px; text-decoration:none;">
+            시연 영상 보기 (유튜브)
+          </a>
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>🧭 대학교 캠퍼스 맵 3차원 내비게이션 시스템 (2025.03 ~ 2025.09 완성 예정)</h3>
+        <p><strong>Unity 3D</strong>, <strong>Firebase</strong>, <strong>OpenAI API</strong>를 활용한 3차원 캠퍼스 내비게이션 시스템</p>
+        
+        <!-- 대표 이미지 -->
+        <div style="display: flex; justify-content: space-between; gap: 20px; margin-bottom: 2rem;">
+            <div style="flex: 1; text-align: center;">
+              <img src="images/Project 2_Auth Panel.png" alt="인증 패널" width="500" style="margin-top:10px; border-radius:8px;" />
+            </div>
+            <div style="flex: 1; text-align: center;">
+              <img src="images/Project 2_Main.png" alt="메인 화면" width="500" style="margin-top:10px; border-radius:8px;" />
+            </div>
+          </div>
+
+        <section>
+          <h2>📁 System Development Overview</h2>
+          <table class="table2">
+            <colgroup>
+              <col style="width: 16%;">
+              <col style="width: 10%;">
+              <col style="width: 14%;">
+              <col style="width: 30%;">
+              <col style="width: 30%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>구성 요소</th>
+                <th>언어</th>
+                <th>기술 스택</th>
+                <th>내부 기능</th>
+                <th>외부 연동</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🧹 Unity 3D</td>
+                <td>C#</td>
+                <td>
+                  <ul class="marker1">
+                    <li>Probuilder</li>
+                    <li>NavMesh</li>
+                    <li>WebGL Build</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>유저 인터페이스 구성 (내비게이션, GPT 질문, 캠퍼스 지도)</li>
+                    <li>NavMesh 기반 길찾기 로직</li>
+                    <li>WebGL 빌드</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>Firebase 연동 (회원가입, 로그인, 데이터베이스 저장)</li>
+                    <li>Django와 연동하여 질의응답 처리</li>
+                    <li>UnityWebRequest로 Django와 JSON 통신</li>
+                    <li>React 웹에 WebGL 포함 및 렌더링</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>🌐 Django Rest Framework (Backend)</td>
+                <td>Python</td>
+                <td>
+                  <ul class="marker1">
+                    <li>Django Rest API</li>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>GPT-3.5 Turbo에게 질문 전달</li>
+                    <li>학교 정보가 저장된 데이터베이스 탐색</li>
+                    <li>시스템 프롬프트 기반 응답 정제</li>
+                    <li>JSON 형식으로 응답 생성</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>Unity에서 전달된 질문 수신 및 응답 반환</li>
+                    <li>Firebase Firestore와 연동하여 질의응답 저장 및 검증</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>☁️ Firebase</td>
+                <td>JavaScript / JSON</td>
+                <td>
+                  <ul class="marker1">
+                    <li>Web App</li>
+                    <li>Authentication</li>
+                    <li>Firestore Database</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>Firebase Authentication으로 회원가입 및 로그인 처리함</li>
+                    <li>사용자 계정 별 Chat-GPT 질의응답 데이터를 Firestore에 저장함</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="marker2">
+                    <li>Firebase UID 및 세션 데이터를 Django로 전달</li>
+                    <li>Django에서 UID를 통해 개인별 GPT 질응을 관련지적으로 저장</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+              <tr>
+                <td>💻 React + Node.js (Frontend)</td>
+                <td>JavaScript</td>
+                <td>
+                  <ul class="marker1">
+                    <li>React</li>
+                    <li>Node.js</li>
+                <td>
+                  <ul class="marker2">
+                    <li>웹 유저 인터페이스 구성</li>
+                    <li>Unity WebGL을 iframe으로 삽입</li>
+                  </ul>
+                </td>
+                <td class="small-text">
+                  <ul class="marker2">
+                    <li>Unity WebGL을 React 페이지에 렌더링</li>
+                    <li>사용자 인터페이스 제공</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div style="margin-top:2rem;">
+          <p style="font-weight:bold; margin-bottom: 1rem; font-size: 1.1rem;">📸 데모 하이라이트</p>
+        
+          <div style="display: flex; justify-content: space-between; gap: 20px; margin-bottom: 2rem;">
+            <div style="flex: 1; text-align: center;">
+              <img src="gifs/Sign-up.gif" alt="회원가입" width="100%" style="border-radius: 8px;" />
+              <p style="margin-top: 0.5rem; font-size: 1rem; color: #555;">(1) 회원가입</p>
+            </div>
+            <div style="flex: 1; text-align: center;">
+              <img src="gifs/Login.gif" alt="로그인" width="100%" style="border-radius: 8px;" />
+              <p style="margin-top: 0.5rem; font-size: 1rem; color: #555;">(2) 로그인</p>
+            </div>
+          </div>
+        
+          <div style="display: flex; justify-content: space-between; gap: 20px;">
+            <div style="flex: 1; text-align: center;">
+              <img src="gifs/Path Finder.gif" alt="길찾기" width="100%" style="border-radius: 8px;" />
+              <p style="margin-top: 0.5rem; font-size: 1rem; color: #555;">(3) 길찾기</p>
+            </div>
+            <div style="flex: 1; text-align: center;">
+              <img src="gifs/GPT_Q&A.gif" alt="Chat-GPT 질의응답" width="100%" style="border-radius: 8px;" />
+              <p style="margin-top: 0.5rem; font-size: 1rem; color: #555;">(4) Chat-GPT 질의응답</p>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-weight:bold; margin-bottom: 1rem; font-size: 1.1rem;"><strong>🔧 기술 세부 사항</strong>
+        <ul class="marker2">
+          <li>Firebase를 활용한 <span class="highlight">회원가입 및 로그인</span> 기능 구현,  <span class="highlight">Chat-GPT 질의응답 로그 저장 및 불러오기</span> 기능 개발</li>
+          <li>ChatGPT 기반 <span class="highlight">NPC 대화 시스템</span> 설계</li>
+          <li>산 지형 기반 경로 탐색 로직 구현</li>
+        </ul>
+        </p>
+        
+        <p style="font-weight:bold; margin-bottom: 1rem; font-size: 1.1rem;">🛠️ 담당 역할</p>
+        <ul class="marker1" style="margin-top: -0.5rem;">
+          <li><strong>Unity</strong>: 사용자 인터페이스 개발, 로직 담당</li>
+          <li><strong>Firebase</strong>: 회원가입 및 로그인 기능 구현, Chat-GPT 질의응답 로그 저장 및 불러오기</li>
+          <li><strong>Full-stack Web</strong>: Django와 Firebase 간 연동, Django와 Unity 간 연동 진행</li>
+        </ul>
+        
+        <p>🔗 깃허브 링크:
+          <a href="https://github.com/jyPark1105/SMU-Navigator-and-Chat-GPT-NPC" target="_blank">대학교 캠퍼스 맵 3차원 내비게이션 시스템 저장소 (2025.09 업로드 예정)</a>
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>🎮 작은 프로젝트</h2>
+    
+      <div class="project">
+        <h3>⚽ #1 3D 공 굴리기 수집 게임 (2025.02.02 ~ 2025.02.12)</h3>
+        <p><strong>Unity 3D</strong> 기반 GoldMetal 튜토리얼을 바탕으로 제작한 3D 미니게임</p>
+        <img src="gifs/Roll & Get Item Game_3D.gif" alt="3D 공 굴리기 게임 미리보기 (GIF)" width="500" style="margin-top:10px; border-radius:8px;" />
+        <ul>
+          <li><span class="highlight">아이템 트리거 기반 3차원 점프 로직</span> 및 물리 시스템 적용</li>
+          <li><span class="highlight">2차원 스프라이트를 활용한 사용자 인터페이스</span> 구현</li>
+          <li><span class="highlight">총 3개의 서로 다른 씬 구조</span>를 활용한 단계별 게임 구성</li>
+        </ul>
+
+        <p><strong>🎮 게임 요약</strong></p>
+        <ul>
+          <li>공을 굴리며 아슬아슬한 발판 위를 이동하여 모든 아이템을 수집하는 게임</li>
+          <li>파란 아이템은 일반 수집용이며, 노란 아이템은 일회성 2단 점프 기능을 제공</li>
+          <li>모든 아이템을 수집하지 못 하면 최종 지점에 도달하더라도 게임 재시작</li>
+        </ul>
+
+        <p><strong>🛠️ 담당 역할:</strong> 단독 개발</p>
+
+        <p>🔗 GitHub Source: 
+          <a href="https://github.com/jyPark1105/Unity-Beginner-Tutorial/tree/main/Project%20BE1" target="_blank">3D 공 굴리기 수집 게임 저장소</a>
+        </p>
+      </div>
+    
+      <div class="project">
+        <h3>🎯 #2 2D 코인 먹기 게임 (2025.02.16 ~ 2025.03.15)</h3>
+
+        <p><strong>Unity 2D</strong> 기반 GoldMetal 튜토리얼을 바탕으로 제작한 소규모 2D 게임</p>
+        <img src="gifs/Get Coin Game_2D.gif" alt="2D 코인 먹기 게임 미리보기 (GIF)" width="500" style="margin-top:10px; border-radius:8px;" />
+        <ul>
+          <li><strong>아이템 트리거 기반 2D 점프 로직과 물리적 콜라이더</strong> 적용</li>
+          <li><strong>2차원 스프라이트를 활용</strong>하여 사용자 인터페이스 구현</li>
+          <li>총 3개의 <strong>서로 다른 장면 구조를 활용하여 단계별 게임 구성</strong></li>
+        </ul>
+
+        <p><strong>🎮 게임 요약</strong></p>
+        <ul>
+          <li>방향키 조작과 함께 적을 피해 서로 다른 종류의 코인을 수집하는 게임</li>
+          <li><span class="highlight">포션은 총 4종류로 구성</span>되며, 각각 다음과 같은 효과 제공<br>
+            - <strong>빨간 포션</strong>: 체력 1칸 회복<br>
+            - <strong>초록 포션</strong>: 일회성 2단 점프<br>
+            - <strong>파란 포션</strong>: 일정 시간 점프력 증가<br>
+            - <strong>노란 포션</strong>: 일정 시간 투명 효과</li>
+          <li><span class="highlight">포탈은 총 2종류로 구성</span>되며, 각각 다음과 같은 효과 제공<br>
+            - <strong>빨간 포탈</strong>: 연결된 다른 포탈의 위치로 순간이동<br>
+            - <strong>검은 포탈</strong>: 다음 스테이지로 이동</li>
+          <li><span class="highlight">주어진 시간 내에 넓은 스테이지를 탈출하세요!</span></li>
+        </ul>
+
+        <p><strong>🛠️ 담당 역할:</strong> 단독 개발</p>
+        <p>🔗 GitHub Source: 
+          <a href="https://github.com/jyPark1105/Unity-Beginner-Tutorial/tree/main/Project%20BE2" target="_blank">2D 코인 먹기 게임 저장소</a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
