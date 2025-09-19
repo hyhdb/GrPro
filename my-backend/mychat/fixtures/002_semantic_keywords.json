@@ -68,7 +68,7 @@
     "fields": {
       "keyword": "운동",
       "alias": "운동, 체육, 헬스, 체육관, 운동장, 트레이닝, 러닝, 조깅, 구기, 농구, 축구, 체력 단련, 운동 시설",
-      "category": "운동 및 체육 활동"
+      "category": "운동 및 체육 활동 관련"
     }
   },
   {
@@ -96,6 +96,15 @@
       "keyword": "카페",
       "alias": "커피, 음료, 빵, 블루포트",
       "category": "카페 관련"
+    }
+  },
+  {
+    "model": "mychat.semantickeyword",
+    "pk": 12,
+    "fields": {
+      "keyword": "편의",
+      "alias": "편의점, 편의 시설, 편의공간, 간단히 살 곳, 편의코너, 매점",
+      "category": "편의 관련"
     }
   }
 ]

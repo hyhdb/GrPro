@@ -10,7 +10,7 @@ if not firebase_admin._apps:
 def verify_id_token(id_token):
     try:
         print(f"✅ 검증 요청받은 토큰 (앞부분): {id_token[:30]}")
-        decoded_token = auth.verify_id_token(id_token)
+        decoded_token = auth.verify_id_token(id_token, clock_skew_seconds=30)
         print(f"✅ 검증 성공, UID: {decoded_token['uid']}")
         return decoded_token["uid"]
     except Exception as e:

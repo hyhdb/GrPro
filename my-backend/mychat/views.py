@@ -21,8 +21,13 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 db = firestore.client()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# --- FOLLOW-UP 헬퍼들 ---
-FOLLOWUP_PAT = re.compile(r"(다른|또|more|another).*(추천|어디|곳)", re.IGNORECASE)
+# --- FOLLOW-UP Helpers ---
+FOLLOWUP_PAT = re.compile(
+    r"^(또\??|또)$|"  # 단독 "또", "또?"
+    r"(다른 곳|또 다른|그 외|그밖에|추가로|더 있어|더 없어|더 보여|또 어디|또 뭐|또 있|나머지|계속|다시|"
+    r"더 말|더 알려|또 알려|그럼|그 외에도|다른 데|추가 있)",
+    re.IGNORECASE
+)
 
 def is_followup_more_request(msg: str) -> bool:
     return bool(msg and FOLLOWUP_PAT.search(msg))
@@ -179,7 +184,7 @@ class ChatWithGptView(APIView):
 
             floor_token = get_floor_token(user_message)  # 수정
 
-            # 🔥 후속 질문("다른 곳?") 처리
+            # 🔥 follow-up 먼저 처리
             if is_followup_more_request(user_message):
                 last_answer_doc = (
                     db.collection("chat_logs")
@@ -199,58 +204,53 @@ class ChatWithGptView(APIView):
                     remaining_ids = last_answer.get("remaining_facilities", [])
                     answered_ids = last_answer.get("answered_facilities", [])
 
-                    # 🔥 Fallback 안전장치: 모든 시설 소진 여부 체크
-                    all_facilities = find_facilities_by_semantic(last_kw) if last_kw else []
-                    all_ids = [f.id for f in all_facilities]
+                    # ✅ semantic_keyword 있는 경우 → 남은 시설 뽑기
+                    if last_kw and remaining_ids:
+                        next_facilities = Facility.objects.filter(id__in=remaining_ids)[:2]
+                        new_remaining = [fid for fid in remaining_ids if fid not in [f.id for f in next_facilities]]
 
-                    if last_kw and not remaining_ids:
-                        if set(answered_ids) >= set(all_ids):
-                            # 이미 다 소진된 경우 → 종료
-                            return Response({
-                                "message": "더 이상 추천할 시설이 없어요.",
-                                "session_title": last_answer.get("session_title", "추천 종료")
-                            }, status=status.HTTP_200_OK)
-                        else:
-                            # answered_ids / all_ids diff 를 구해 남은 게 있으면 fallback 으로 사용
-                            new_remaining = [fid for fid in all_ids if fid not in answered_ids]
-                            next_facilities = Facility.objects.filter(id__in=new_remaining)[:2]
+                    # ✅ semantic_keyword 없는 경우라도 remaining_ids 있으면 fallback
+                    elif not last_kw and remaining_ids:
+                        next_facilities = Facility.objects.filter(id__in=remaining_ids)[:2]
+                        new_remaining = [fid for fid in remaining_ids if fid not in [f.id for f in next_facilities]]
 
-                        # Firestore 저장 (질문 + 답변 모두 기록)
-                        q_doc_id = get_next_doc_id_with_prefix(user_uid, "Q")
-                        db.collection("chat_logs").document(q_doc_id).set({
-                            "user_uid": user_uid,
-                            "session_id": last_answer["session_id"],
-                            "session_number": session_index,
-                            "role": "user",
-                            "message": user_message,
-                            "timestamp": firestore.SERVER_TIMESTAMP,
-                            "session_title": last_answer["session_title"]
-                        })
-
-                        a_doc_id = get_next_doc_id_with_prefix(user_uid, "A")
-                        db.collection("chat_logs").document(a_doc_id).set({
-                            "user_uid": user_uid,
-                            "session_id": last_answer["session_id"],
-                            "session_number": session_index,
-                            "role": "assistant",
-                            "message": "\n".join([f"- {f.building.name} {f.name}: {f.description}" for f in next_facilities]),
-                            "answered_facilities": [f.id for f in next_facilities],
-                            "remaining_facilities": new_remaining,
-                            "semantic_keyword": last_kw,
-                            "timestamp": firestore.SERVER_TIMESTAMP,
-                            "session_title": last_answer["session_title"]
-                        })
-
-                        return Response({
-                            "message": "\n".join([f"- {f.building.name} {f.name}: {f.description}" for f in next_facilities]),
-                            "session_title": last_answer["session_title"]
-                        }, status=status.HTTP_200_OK)
-
-                    elif last_kw and not remaining_ids:
+                    else:
                         return Response({
                             "message": "더 이상 추천할 시설이 없어요.",
                             "session_title": last_answer.get("session_title", "추천 종료")
                         }, status=status.HTTP_200_OK)
+
+                    # Firestore 저장 (Q/A 기록)
+                    q_doc_id = get_next_doc_id_with_prefix(user_uid, "Q")
+                    db.collection("chat_logs").document(q_doc_id).set({
+                        "user_uid": user_uid,
+                        "session_id": last_answer["session_id"],
+                        "session_number": session_index,
+                        "role": "user",
+                        "message": user_message,
+                        "timestamp": firestore.SERVER_TIMESTAMP,
+                        "session_title": last_answer["session_title"]
+                    })
+
+                    a_doc_id = get_next_doc_id_with_prefix(user_uid, "A")
+                    db.collection("chat_logs").document(a_doc_id).set({
+                        "user_uid": user_uid,
+                        "session_id": last_answer["session_id"],
+                        "session_number": session_index,
+                        "role": "assistant",
+                        "message": "\n".join([f"- {f.building.name} {f.name}: {f.description}" for f in next_facilities]),
+                        "answered_facilities": answered_ids + [f.id for f in next_facilities],
+                        "remaining_facilities": new_remaining,
+                        "semantic_keyword": last_kw or "",
+                        "timestamp": firestore.SERVER_TIMESTAMP,
+                        "session_title": last_answer["session_title"]
+                    })
+
+                    return Response({
+                        "message": "\n".join([f"- {f.building.name} {f.name}: {f.description}" for f in next_facilities]),
+                        "session_title": last_answer["session_title"]
+                    }, status=status.HTTP_200_OK)
+
 
             # (신규) 직전 대화에서 건물 이어받기: 건물명 없이 층만 말한 경우  # 수정
             if not matched_building and floor_token:  # 수정
@@ -259,25 +259,33 @@ class ChatWithGptView(APIView):
                     matched_building, building_match_type = prev_building, "context"  # 수정
 
             # ✅ 시설 찾기
-            # ✅ 시설 찾기
             facilities = []
             if matched_semantic:
-                if matched_intent and matched_intent.intent_type == "추천 요청":
-                    facilities = find_facilities_by_semantic(matched_semantic.keyword)
-                else:
-                    facilities = self.find_facilities_with_exclusion(matched_semantic.keyword, user_uid, session_index)
+                if matched_intent and matched_intent.intent_type in ["추천 요청", "공간 요청"]:
+                    all_facilities = find_facilities_by_semantic(matched_semantic.keyword)
 
+                    # 시설 개수에 따라 분기 처리
+                    if len(all_facilities) <= 3:
+                        facilities = all_facilities
+                        answered_ids = [f.id for f in facilities]
+                        remaining_ids = []
+                    else:
+                        facilities = all_facilities[:3]  # 처음 3개만 응답
+                        answered_ids = [f.id for f in facilities]
+                        remaining_ids = [f.id for f in all_facilities[3:]]  # 나머지는 follow-up용
+                else:
+                    facilities = self.find_facilities_with_exclusion(
+                        matched_semantic.keyword, user_uid, session_index
+                    )
+                    answered_ids = [f.id for f in facilities]
+                    remaining_ids = []
             elif matched_building:
                 facilities = list(Facility.objects.filter(building=matched_building))
-
-            # (신규) semantic이 "식사"일 때 → 반드시 3개 포함 보장
-            if matched_semantic and matched_semantic.keyword == "식사":
-                required_names = ["편의점", "애니이츠월드", "학생식당"]
-                required_facilities = Facility.objects.filter(name__in=required_names)
-                # 누락된 것 있으면 강제로 추가
-                for rf in required_facilities:
-                    if rf not in facilities:
-                        facilities.append(rf)
+                answered_ids = [f.id for f in facilities]
+                remaining_ids = []
+            else:
+                answered_ids = []
+                remaining_ids = []
 
             # (신규) 층이 명시되면 해당 층 시설만 필터링  # 수정
             if floor_token:
@@ -520,6 +528,15 @@ class ChatWithGptView(APIView):
         return None, None
 
     def find_matched_semantic(self, message: str):
+        # 우선순위 1: 편의점 → "편의" semantic
+        if "편의점" in message:
+            # "밥", "먹", "식사" 같은 단어와 같이 나오면 식사 semantic
+            if any(word in message for word in ["밥", "먹", "식사", "점심", "저녁"]):
+                return SemanticKeyword.objects.filter(keyword="식사").first()
+            else:
+                return SemanticKeyword.objects.filter(keyword="편의").first()
+
+        # 일반 semantic 처리
         for semantic in SemanticKeyword.objects.all():
             keywords = [semantic.keyword] + [a.strip() for a in semantic.alias.split(",") if a.strip()]
             if any(word in message for word in keywords):
@@ -542,12 +559,28 @@ class ChatWithGptView(APIView):
         print(f"📌 facility count: {len(facilities)}")
 
         if building:
-            if has_floor_mentioned or building_match_type != "direct":
-                prompt_template = load_prompt_template("system_prompt_matched.txt")
+            # 먼저 나눠주기
+            facilities_in_building = [f for f in facilities if f.building == building]
+            facilities_outside = [f for f in facilities if f.building != building]
+
+            if facilities_outside:  # 건물 외에도 semantic 시설이 있음
+                prompt_template = load_prompt_template("system_prompt_building_plus_semantic.txt")
+                print("📄 사용된 프롬프트: system_prompt_building_plus_semantic.txt")
             else:
-                prompt_template = load_prompt_template("system_prompt_matched_and_floor_unmatched.txt")
+                if has_floor_mentioned or building_match_type != "direct":
+                    prompt_template = load_prompt_template("system_prompt_matched.txt")
+                    print("📄 사용된 프롬프트: system_prompt_matched.txt")
+                else:
+                    prompt_template = load_prompt_template("system_prompt_matched_and_floor_unmatched.txt")
+                    print("📄 사용된 프롬프트: system_prompt_matched_and_floor_unmatched.txt")
+
         else:
-            prompt_template = load_prompt_template("system_prompt_notfound.txt")
+            if facilities:  # 건물은 없지만 semantic 기반 시설이 있는 경우
+                prompt_template = load_prompt_template("system_prompt_semantic_only.txt")
+                print("📄 사용된 프롬프트: system_prompt_semantic_only.txt")
+            else:
+                prompt_template = load_prompt_template("system_prompt_notfound.txt")
+                print("📄 사용된 프롬프트: system_prompt_notfound.txt")
 
         # ✅ facility_list 정의
         if not facilities:
